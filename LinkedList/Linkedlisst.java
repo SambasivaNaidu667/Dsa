@@ -152,6 +152,24 @@ public class Linkedlisst {
             size++;
         }
     }
+    void reverse(){
+        if(size==0){
+            return;
+        }
+        else if(head==null || head.next==null){
+           return;
+        }
+        Node prev=null;
+        Node current=head;
+        Node oldHead = head;
+        while(current!=null){
+            Node next=current.next;
 
-    
+            current.next=prev;
+            prev=current;
+            current=next;
+        }
+        head=prev;
+        tail=oldHead;
+    }
 }
