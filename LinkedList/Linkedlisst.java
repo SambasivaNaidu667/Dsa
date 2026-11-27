@@ -172,4 +172,54 @@ public class Linkedlisst {
         head=prev;
         tail=oldHead;
     }
+    boolean detect_Cyclye(){
+
+        if(head==null){
+            return false;
+        }
+        Node slow=head;
+        Node fast=head;
+        while(fast!=null && fast.next!=null ){
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast){
+               return true;
+            }
+
+         }
+         return false;
+
+
+    }
+    void detect_detect_remove(){
+        if(head==null){
+            return;
+        }
+        Node slow =head;
+        Node fast=head;
+        while(fast!=null && fast.next!=null){
+           slow=slow.next;
+           fast=fast.next.next;
+           if(slow==fast){
+            break;
+           }
+        }
+
+        if(fast==null || fast.next==null){
+            return ;
+        }
+        fast=head;
+        while(slow!=fast){
+            slow=slow.next;
+            fast=fast.next;
+        }
+
+        Node cycleEnd=slow;
+        while(cycleEnd.next!=slow){
+            cycleEnd=cycleEnd.next;
+        }
+        cycleEnd.next=null;
+        tail=cycleEnd;
+
+    }
 }
